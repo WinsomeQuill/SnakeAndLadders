@@ -24,6 +24,7 @@ namespace SnakesAndLadders
         {
             InitializeComponent();
             new Map().Show();
+            Close();
         }
     }
 }

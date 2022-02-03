@@ -19,47 +19,77 @@ namespace SnakesAndLadders
     /// </summary>
     public partial class Map : Window
     {
+        private int column = 0; // временная переменная
+        private int row = 4; // временная переменная
+        private int size = 22; // размер игрового поля
+        private int count = 1; // используется для форматирования текста (номер игровой клетки)
+        private bool reverse = false; // используется для обратной нумерации клеток в колонке, таким образом, игровое поле имеет вид змейки
         public Map()
         {
             InitializeComponent();
-            int count = 1;
-            bool reverse = false;
-            int size = 24;
-
-            int result = Convert.ToInt32(Math.Round(Convert.ToDouble(size) / 5 - 1));
-            // MessageBox.Show($"{result}");
-            for (int i = 4; i >= 0; i--)
+            
+            while(size != 0)
             {
-                if (reverse)
+
+                if (column == 5)
                 {
-                    for (int j = 4; j >= 0; j--)
+                    column = 0;
+                    row--;
+                    size--;
+                    if (reverse)
                     {
-                        Label label = new Label
-                        {
-                            Content = "Text" + count
-                        };
-                        GridMap.Children.Add(label);
-                        label.SetValue(Grid.RowProperty, i);
-                        label.SetValue(Grid.ColumnProperty, j);
-                        count++;
+                        reverse = false;
                     }
-                    reverse = false;
+                    else
+                    {
+                        reverse = true;
+                    }
+                    AddCage();
+                    column++;
+                    continue;
                 }
-                else
+
+                /*Deprecated
+                if (row == 0)
                 {
-                    for (int j = 0; j < 5; j++)
-                    {
-                        Label label = new Label
-                        {
-                            Content = "Text" + count
-                        };
-                        GridMap.Children.Add(label);
-                        label.SetValue(Grid.RowProperty, i);
-                        label.SetValue(Grid.ColumnProperty, j);
-                        count++;
-                    }
-                    reverse = true;
-                }
+                    row = 5;
+                    column++;
+                    size--;
+                    row--;
+                    AddCage();
+                    continue;
+                }*/
+
+                AddCage();
+                column++;
+                size--;
+            }
+        }
+
+        private void AddCage()
+        {
+            
+            if(!reverse)
+            {
+                Label label = new Label
+                {
+                    Content = "Text" + count
+                };
+                GridMap.Children.Add(label);
+                label.SetValue(Grid.ColumnProperty, column);
+                label.SetValue(Grid.RowProperty, row);
+                count++;
+            }
+            else
+            {
+                Label label = new Label
+                {
+                    Content = "Text" + count
+                };
+                GridMap.Children.Add(label);
+                label.SetValue(Grid.ColumnProperty, (column - 4) * -1);
+                label.SetValue(Grid.RowProperty, row);
+                count++;
             }
         }
     }
