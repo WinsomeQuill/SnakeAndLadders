@@ -34,3 +34,5 @@ C:\Users\Андрей\source\repos\Snake\SnakesAndLadders\obj\Debug\SnakesAndLad
 C:\Users\Андрей\source\repos\Snake\SnakesAndLadders\obj\Debug\SnakesAndLadders.csproj.CoreCompileInputs.cache
 C:\Users\Андрей\source\repos\Snake\SnakesAndLadders\obj\Debug\Dictionary1.baml
 C:\Users\Андрей\source\repos\Snake\SnakesAndLadders\obj\Debug\App.baml
+C:\Users\Андрей\source\repos\Snake\SnakesAndLadders\obj\Debug\GameLauncher\Launcher.g.cs
+C:\Users\Андрей\source\repos\Snake\SnakesAndLadders\obj\Debug\GameLauncher\Launcher.baml

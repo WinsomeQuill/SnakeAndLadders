@@ -27,7 +27,8 @@ namespace SnakesAndLadders
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            GameLauncher.Launcher launcher = new GameLauncher.Launcher();
+            launcher.Show();
         }
 
         private void Login_GotFocus(object sender, RoutedEventArgs e)
