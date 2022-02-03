@@ -5,8 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SnakesAndLadders"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" ResizeMode="CanMinimize">
+        Title="Авторизация" Height="350" Width="400" ResizeMode="CanMinimize">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Авторизация" Width="270" Height="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="22"/>
+        <Border Grid.Row="1" CornerRadius="6" BorderBrush="GreenYellow"  BorderThickness="1.5" Width="270" Height="35" UseLayoutRounding="True">
+            <TextBox Name="Login" BorderThickness="0" Background="Transparent" Text="Введите логин" VerticalContentAlignment="Center" FontSize="15" GotFocus="Login_GotFocus" />
+        </Border>
+
+        <Border Grid.Row="2" CornerRadius="6" BorderBrush="GreenYellow"  BorderThickness="1.5" Width="270" Height="35" UseLayoutRounding="True">
+            <PasswordBox Name="Password" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Password="Введите пароль"  FontSize="15" GotFocus="Password_GotFocus" />
+        </Border>
+
+        <Button Grid.Row="3" Content="Войти"  Style="{StaticResource ButtonGreen}" Click="Button_Click"/>
     </Grid>
 </Window>

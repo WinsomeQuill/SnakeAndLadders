@@ -22,8 +22,26 @@ namespace SnakesAndLadders
     {
         public MainWindow()
         {
-            InitializeComponent();
-            new Map().Show();
+            
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Login_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox lg = (TextBox)sender;
+            lg.Text = string.Empty;
+            lg.GotFocus -= Login_GotFocus;
+        }
+
+        private void Password_GotFocus(object sender, RoutedEventArgs e)
+        {
+            PasswordBox pt = (PasswordBox)sender;
+            pt.Password = string.Empty;
+            pt.GotFocus -= Password_GotFocus;
         }
     }
 }
