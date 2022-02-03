@@ -23,5 +23,25 @@ namespace SnakesAndLadders.GameLauncher
         {
             InitializeComponent();
         }
+
+        private void Play_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void HowToPlay_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Settings_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

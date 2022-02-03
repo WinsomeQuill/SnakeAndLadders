@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SnakesAndLadders.GameLauncher"
         mc:Ignorable="d"
         Title="Launcher" Height="450" Width="500">
-    <Grid>
+    <Grid Background="Gray">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
@@ -16,10 +16,10 @@
         </Grid.RowDefinitions>
 
         <Label Content="Змеи и лестницы" Width="270" Height="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25"/>
-        <Button Content="Играть" Grid.Row="1" Style="{StaticResource ButtonLauncher}" Background="Green"/>
-        <Button Content="Как играть" Grid.Row="2" Style="{StaticResource ButtonLauncher}" Background="Green"/>
-        <Button Content="Настройки" Grid.Row="3" Style="{StaticResource ButtonLauncher}" Background="Green"/>
-        <Button Content="Выйти" Grid.Row="4" Style="{StaticResource ButtonLauncher}" Background="Green"/>
+        <Button Name="Play" Content="Играть" Grid.Row="1" Style="{StaticResource ButtonLauncher}"  Click="Play_Click"/>
+        <Button Name="HowToPlay" Content="Как играть" Grid.Row="2" Style="{StaticResource ButtonLauncher}"  Click="HowToPlay_Click"/>
+        <Button Name="Settings" Content="Настройки" Grid.Row="3" Style="{StaticResource ButtonLauncher}"  Click="Settings_Click"/>
+        <Button Name="Exit" Content="Выйти" Grid.Row="4" Style="{StaticResource ButtonLauncher}"  Click="Exit_Click"/>
         
     </Grid>
 </Window>
