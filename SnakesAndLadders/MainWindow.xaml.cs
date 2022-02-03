@@ -23,7 +23,14 @@ namespace SnakesAndLadders
         public MainWindow()
         {
             InitializeComponent();
-            new Map().Show();
+            Map map = new Map();
+            Utils._map = map;
+            Player player = new Player("Test");
+            Player player1 = new Player("WinsomeQuill");
+            Utils._players.Add(player);
+            Utils._players.Add(player1);
+            map.Show();
+            new DevWindow().Show();
             Close();
         }
     }

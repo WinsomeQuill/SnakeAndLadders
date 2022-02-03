@@ -19,33 +19,34 @@ namespace SnakesAndLadders
     /// </summary>
     public partial class Map : Window
     {
-        private int column = 0; // временная переменная
-        private int row = 4; // временная переменная
-        private int size = 22; // размер игрового поля
-        private int count = 1; // используется для форматирования текста (номер игровой клетки)
-        private bool reverse = false; // используется для обратной нумерации клеток в колонке, таким образом, игровое поле имеет вид змейки
+        private int _column = 0; // временная переменная
+        private int _row = 4; // временная переменная
+        private int _size_temp = Utils._size;
+        private int _count = 1; // используется для форматирования текста (номер игровой клетки)
+        private bool _reverse = false; // используется для обратной нумерации клеток в колонке, таким образом, игровое поле имеет вид змейки
+        
         public Map()
         {
             InitializeComponent();
             
-            while(size != 0)
+            while(_size_temp != 0)
             {
 
-                if (column == 5)
+                if (_column == 5)
                 {
-                    column = 0;
-                    row--;
-                    size--;
-                    if (reverse)
+                    _column = 0;
+                    _row--;
+                    _size_temp--;
+                    if (_reverse)
                     {
-                        reverse = false;
+                        _reverse = false;
                     }
                     else
                     {
-                        reverse = true;
+                        _reverse = true;
                     }
                     AddCage();
-                    column++;
+                    _column++;
                     continue;
                 }
 
@@ -61,35 +62,37 @@ namespace SnakesAndLadders
                 }*/
 
                 AddCage();
-                column++;
-                size--;
+                _column++;
+                _size_temp--;
             }
         }
 
         private void AddCage()
         {
             
-            if(!reverse)
+            if(!_reverse)
             {
                 Label label = new Label
                 {
-                    Content = "Text" + count
+                    Content = "Text" + _count
                 };
                 GridMap.Children.Add(label);
-                label.SetValue(Grid.ColumnProperty, column);
-                label.SetValue(Grid.RowProperty, row);
-                count++;
+                label.SetValue(Grid.ColumnProperty, _column);
+                label.SetValue(Grid.RowProperty, _row);
+                Utils._list_cages.Add(_count, new int[] { _column, _row });
+                _count++;
             }
             else
             {
                 Label label = new Label
                 {
-                    Content = "Text" + count
+                    Content = "Text" + _count
                 };
                 GridMap.Children.Add(label);
-                label.SetValue(Grid.ColumnProperty, (column - 4) * -1);
-                label.SetValue(Grid.RowProperty, row);
-                count++;
+                label.SetValue(Grid.ColumnProperty, (_column - 4) * -1);
+                label.SetValue(Grid.RowProperty, _row);
+                Utils._list_cages.Add(_count, new int[] { _column, _row });
+                _count++;
             }
         }
     }

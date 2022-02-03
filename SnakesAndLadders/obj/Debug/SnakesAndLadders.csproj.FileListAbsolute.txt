@@ -16,3 +16,5 @@ E:\Projects\C#\SnakesAndLadders\SnakesAndLadders\obj\Debug\SnakesAndLadders.cspr
 E:\Projects\C#\SnakesAndLadders\SnakesAndLadders\obj\Debug\SnakesAndLadders.csproj.CoreCompileInputs.cache
 E:\Projects\C#\SnakesAndLadders\SnakesAndLadders\obj\Debug\SnakesAndLadders.exe
 E:\Projects\C#\SnakesAndLadders\SnakesAndLadders\obj\Debug\SnakesAndLadders.pdb
+E:\Projects\C#\SnakesAndLadders\SnakesAndLadders\obj\Debug\DevWindow.g.cs
+E:\Projects\C#\SnakesAndLadders\SnakesAndLadders\obj\Debug\DevWindow.baml
