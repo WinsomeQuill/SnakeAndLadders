@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "809fc105-7230-4651-8623-34000435132b": {
+      "ProjectGuid": "809fc105-7230-4651-8623-34000435132b",
+      "DisplayName": "Snake",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
