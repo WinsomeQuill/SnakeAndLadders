@@ -5,21 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SnakesAndLadders"
         mc:Ignorable="d"
-        Title="Map" Height="500" Width="500" ResizeMode="CanMinimize">
-    <Grid x:Name="GridMap">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-        </Grid.RowDefinitions>
-    </Grid>
+        Title="Map" Height="700" Width="700" ResizeMode="CanMinimize">
+    <Grid x:Name="GridMap"/>
 </Window>

@@ -27,10 +27,8 @@ namespace SnakesAndLadders
         private void ButtonDevSetCage_Click(object sender, RoutedEventArgs e)
         {
             int number_cage = Convert.ToInt32(TextBoxDevSetCage.Text);
-            Random random = new Random();
-            Player player = Utils._players[random.Next(0, 2)];
-            player.SetPosition(number_cage);
-            MessageBox.Show($"{player._Name} set pos {number_cage}");
+            int[] pos = Utils.GetGridPositionByCageNumber(number_cage);
+            MessageBox.Show($"{pos[0]} : {pos[1]}");
         }
 
         private void ButtonDevDice_Click(object sender, RoutedEventArgs e)
@@ -38,7 +36,7 @@ namespace SnakesAndLadders
             Random random = new Random();
             Player player = Utils._players[random.Next(0, 2)];
             int number_cage = random.Next(1, 7);
-            player.SetPosition(number_cage);
+            player.AddPosition(number_cage);
             MessageBox.Show($"[{player._Name}] Dice: {number_cage}");
         }
     }

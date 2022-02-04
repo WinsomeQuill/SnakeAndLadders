@@ -19,81 +19,73 @@ namespace SnakesAndLadders
     /// </summary>
     public partial class Map : Window
     {
-        private int _column = 0; // временная переменная
-        private int _row = 4; // временная переменная
-        private int _size_temp = Utils._size;
-        private int _count = 1; // используется для форматирования текста (номер игровой клетки)
-        private bool _reverse = false; // используется для обратной нумерации клеток в колонке, таким образом, игровое поле имеет вид змейки
-        
         public Map()
         {
             InitializeComponent();
-            
-            while(_size_temp != 0)
+
+            Init();
+
+            for (int i = 0; i < Utils._size; i++)
             {
-
-                if (_column == 5)
+                for (int j = 0; j < Utils._size; j++)
                 {
-                    _column = 0;
-                    _row--;
-                    _size_temp--;
-                    if (_reverse)
-                    {
-                        _reverse = false;
-                    }
-                    else
-                    {
-                        _reverse = true;
-                    }
-                    AddCage();
-                    _column++;
-                    continue;
+                    AddCage(i, j);
                 }
-
-                /*Deprecated
-                if (row == 0)
-                {
-                    row = 5;
-                    column++;
-                    size--;
-                    row--;
-                    AddCage();
-                    continue;
-                }*/
-
-                AddCage();
-                _column++;
-                _size_temp--;
             }
         }
 
-        private void AddCage()
+        private void Init()
         {
-            
-            if(!_reverse)
+            int count = 0;
+            for (int i = 0; i < Utils._size; i++)
             {
-                Label label = new Label
+                GridMap.RowDefinitions.Add(new RowDefinition { Height = new GridLength(this.Height / Utils._size, GridUnitType.Pixel) });
+                for (int j = 0; j < Utils._size; j++)
                 {
-                    Content = "Text" + _count
-                };
-                GridMap.Children.Add(label);
-                label.SetValue(Grid.ColumnProperty, _column);
-                label.SetValue(Grid.RowProperty, _row);
-                Utils._list_cages.Add(_count, new int[] { _column, _row });
-                _count++;
+                    GridMap.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(this.Width / Utils._size, GridUnitType.Pixel) });
+                    Utils._cachemap[i, j] = count += 1;
+                }
             }
-            else
+            Format();
+        }
+
+        private void Format()
+        {
+            for (int i = 1; i < Utils._size; i += 2)
             {
-                Label label = new Label
+                for (int j = 0; j < Utils._size / 2; j++)
                 {
-                    Content = "Text" + _count
-                };
-                GridMap.Children.Add(label);
-                label.SetValue(Grid.ColumnProperty, (_column - 4) * -1);
-                label.SetValue(Grid.RowProperty, _row);
-                Utils._list_cages.Add(_count, new int[] { _column, _row });
-                _count++;
+                    int tmp = Utils._cachemap[i, j];
+                    Utils._cachemap[i, j] = Utils._cachemap[i, Utils._size - j - 1];
+                    Utils._cachemap[i, Utils._size - j - 1] = tmp;
+                }
             }
+
+            for (int i = 0; i < Utils._size / 2; i += 1)
+            {
+                for (int j = 0; j < Utils._size; j++)
+                {
+                    int tmp = Utils._cachemap[i, j];
+                    Utils._cachemap[i, j] = Utils._cachemap[Utils._size - i - 1, j];
+                    Utils._cachemap[Utils._size - i - 1, j] = tmp;
+                }
+            }
+        }
+
+        private void AddCage(int row, int column)
+        {
+            Border myBorder1 = new Border();
+            myBorder1.Background = Brushes.SkyBlue;
+            myBorder1.BorderBrush = Brushes.Black;
+            myBorder1.BorderThickness = new Thickness(1);
+            Label label = new Label
+            {
+                Content = $"Text {row}:{column} [{Utils._cachemap[row, column]}]"
+            };
+            myBorder1.Child = label;
+            GridMap.Children.Add(myBorder1);
+            myBorder1.SetValue(Grid.ColumnProperty, column);
+            myBorder1.SetValue(Grid.RowProperty, row);
         }
     }
 }
