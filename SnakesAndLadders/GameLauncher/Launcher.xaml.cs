@@ -26,12 +26,16 @@ namespace SnakesAndLadders.GameLauncher
 
         private void Play_Click(object sender, RoutedEventArgs e)
         {
-
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
         }
 
         private void HowToPlay_Click(object sender, RoutedEventArgs e)
         {
-
+            GameLauncher.HowToPlay howToPlay = new GameLauncher.HowToPlay();
+            howToPlay.Show();
+            this.Close();
         }
 
         private void Settings_Click(object sender, RoutedEventArgs e)

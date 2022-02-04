@@ -5,24 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SnakesAndLadders"
         mc:Ignorable="d"
-        Title="Авторизация" Height="350" Width="400" ResizeMode="CanMinimize">
+        Title="Авторизация" Height="300" Width="500" ResizeMode="CanMinimize">
     <Grid>
+        <Grid.Background>
+
+            <ImageBrush ImageSource="/Image/photo.jpg">
+            </ImageBrush>
+        </Grid.Background>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1.5*"/>
-            <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
+        <Image Source="/Image/Cloud.png" />
 
-        <Label Content="Авторизация" Width="270" Height="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="22"/>
-        <Border Grid.Row="1" CornerRadius="6" BorderBrush="Gray"  BorderThickness="1.5" Width="270" Height="35" UseLayoutRounding="True">
-            <TextBox Name="Login" BorderThickness="0" Background="Transparent" Text="Введите логин" VerticalContentAlignment="Center" FontSize="15" GotFocus="Login_GotFocus" />
-        </Border>
+          
+   
+        <Label Content="Выберите количество игроков" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" />
+        <ComboBox Grid.Row="1" Width="100" Height="30" VerticalContentAlignment="Center" VerticalAlignment="Top" >
+            <ComboBoxItem IsSelected="True">
+                <TextBlock>2 игрока</TextBlock>
+            </ComboBoxItem>
+            <TextBlock>3 игрока</TextBlock>
+            <TextBlock>4 игрока</TextBlock>
+        </ComboBox>
+        <Button Style="{StaticResource button}"  Name="Back" Width="35" Height="35" HorizontalAlignment="Left" VerticalAlignment="Top"  Click="Back_Click" BorderThickness="0">
+            <Image>
+                <Image.Source>
+                    <FormatConvertedBitmap Source="/Image/Exit.png"/>
+                </Image.Source>
+            </Image>
+        </Button>
+        
+        <Button Content="Ok" Style="{StaticResource launcher}" Grid.Row="1"  />
 
-        <Border Grid.Row="2" CornerRadius="6" BorderBrush="Gray"  BorderThickness="1.5" Width="270" Height="35" UseLayoutRounding="True">
-            <PasswordBox Name="Password" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" Password="Введите пароль"  FontSize="15" GotFocus="Password_GotFocus" />
-        </Border>
-
-        <Button Grid.Row="3" Content="Войти"  Style="{StaticResource ButtonGreen}" Click="Button_Click"/>
+       
     </Grid>
 </Window>

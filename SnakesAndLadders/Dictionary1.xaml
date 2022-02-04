@@ -25,7 +25,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Background="{TemplateBinding Background}" CornerRadius="15" BorderBrush="DarkGray"  BorderThickness="1.5" Width="250" Height="40"  >
+                    <Border Background="{TemplateBinding Background}" CornerRadius="15" BorderBrush="DarkGray"  BorderThickness="1.5" Width="150" Height="40"  >
                         <ContentControl Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="17" />
                     </Border>
                 </ControlTemplate>
@@ -37,4 +37,24 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+
+    <Style TargetType="Button" x:Key="launcher">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="black"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="10" BorderBrush="DarkGray"  BorderThickness="1.5" Width="40" Height="30"  >
+                        <ContentControl Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="LightGray"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
 </ResourceDictionary>
