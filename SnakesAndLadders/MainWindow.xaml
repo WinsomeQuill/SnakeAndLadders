@@ -28,7 +28,7 @@
             <TextBlock>3 игрока</TextBlock>
             <TextBlock>4 игрока</TextBlock>
         </ComboBox>
-        <Button Style="{StaticResource button}"  Name="Back" Width="35" Height="35" HorizontalAlignment="Left" VerticalAlignment="Top"  Click="Back_Click" BorderThickness="0">
+        <Button  Name="Back" Width="35" Height="35" HorizontalAlignment="Left" VerticalAlignment="Top" Background="Transparent"  Click="Back_Click" BorderThickness="0">
             <Image>
                 <Image.Source>
                     <FormatConvertedBitmap Source="/Image/Exit.png"/>
