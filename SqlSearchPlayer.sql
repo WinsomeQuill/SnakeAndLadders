@@ -1,1 +1,0 @@
-insert into Users (Login) values ('Name')
