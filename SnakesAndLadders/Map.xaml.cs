@@ -39,10 +39,10 @@ namespace SnakesAndLadders
             int count = 0;
             for (int i = 0; i < Utils._size; i++)
             {
-                GridMap.RowDefinitions.Add(new RowDefinition { Height = new GridLength(this.Height / Utils._size, GridUnitType.Pixel) });
+                GridMap.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
                 for (int j = 0; j < Utils._size; j++)
                 {
-                    GridMap.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(this.Width / Utils._size, GridUnitType.Pixel) });
+                    GridMap.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(this.Width / Utils._size, GridUnitType.Pixel) }); //костыль, но работает :/
                     Utils._cachemap[i, j] = count += 1;
                 }
             }

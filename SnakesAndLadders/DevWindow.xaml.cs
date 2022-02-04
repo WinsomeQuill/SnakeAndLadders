@@ -22,22 +22,46 @@ namespace SnakesAndLadders
         public DevWindow()
         {
             InitializeComponent();
-        }
-
-        private void ButtonDevSetCage_Click(object sender, RoutedEventArgs e)
-        {
-            int number_cage = Convert.ToInt32(TextBoxDevSetCage.Text);
-            int[] pos = Utils.GetGridPositionByCageNumber(number_cage);
-            MessageBox.Show($"{pos[0]} : {pos[1]}");
+            foreach (Player item in Utils._players)
+            {
+                ComboBoxDev1.Items.Add($"{item._Name}");
+            }
+            ComboBoxDev1.SelectedIndex = 0;
+            UpdateScrollViewerDev2();
         }
 
         private void ButtonDevDice_Click(object sender, RoutedEventArgs e)
         {
             Random random = new Random();
-            Player player = Utils._players[random.Next(0, 2)];
+            Player player = Utils._players[random.Next(0, Utils._players.Count)];
             int number_cage = random.Next(1, 7);
             player.AddPosition(number_cage);
+            UpdateScrollViewerDev2();
             MessageBox.Show($"[{player._Name}] Dice: {number_cage}");
+        }
+
+        private void ButtonDev1_Click(object sender, RoutedEventArgs e)
+        {
+            string name = ComboBoxDev1.Text;
+            int cage_number = Convert.ToInt32(TextBoxDev1.Text);
+            foreach (Player item in Utils._players)
+            {
+                if(item._Name == name)
+                {
+                    item.SetPosition(cage_number);
+                    UpdateScrollViewerDev2();
+                    return;
+                }
+            }
+        }
+
+        private void UpdateScrollViewerDev2()
+        {
+            StackPanelDev2.Children.Clear();
+            foreach (Player item in Utils._players)
+            {
+                StackPanelDev2.Children.Add(new TextBlock { Text = $"{item._Name} - Pos: {item._Position_Cage} R: {item._Position[0]} C: {item._Position[1]}" });
+            }
         }
     }
 }

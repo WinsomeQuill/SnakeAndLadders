@@ -26,11 +26,13 @@ namespace SnakesAndLadders
             Map map = new Map();
             Utils._map = map;
             map.Show();
+            Utils._players.Add(new Player("Test", VerticalAlignment.Bottom, HorizontalAlignment.Left));
+            Utils._players.Add(new Player("WinsomeQuill", VerticalAlignment.Bottom, HorizontalAlignment.Right));
             new DevWindow().Show();
-            Player player = new Player("Test");
-            Player player1 = new Player("WinsomeQuill");
-            Utils._players.Add(player);
-            Utils._players.Add(player1);
+            foreach (Player item in Utils._players)
+            {
+                item.SetPosition(1);
+            }
             Close();
         }
     }
