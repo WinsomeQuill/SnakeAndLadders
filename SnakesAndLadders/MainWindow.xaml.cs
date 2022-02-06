@@ -26,8 +26,8 @@ namespace SnakesAndLadders
             Map map = new Map();
             Utils._map = map;
             map.Show();
-            Utils._players.Add(new Player("Test", VerticalAlignment.Bottom, HorizontalAlignment.Left));
-            Utils._players.Add(new Player("WinsomeQuill", VerticalAlignment.Bottom, HorizontalAlignment.Right));
+            Utils._players.Add(new Player("Test", VerticalAlignment.Bottom, HorizontalAlignment.Right, "test1.png"));
+            Utils._players.Add(new Player("WinsomeQuill", VerticalAlignment.Top, HorizontalAlignment.Right, "test1.png"));
             new DevWindow().Show();
             foreach (Player item in Utils._players)
             {

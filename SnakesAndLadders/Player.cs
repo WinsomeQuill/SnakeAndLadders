@@ -6,26 +6,23 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace SnakesAndLadders
 {
     public class Player
     {
-        public Player(string name, VerticalAlignment vertical, HorizontalAlignment horizantal)
+        public Player(string name, VerticalAlignment vertical, HorizontalAlignment horizantal, string image_path)
         {
             this._Name = name;
-            this._label = new Label
-            {
-                Content = $"{this._Name}",
-                VerticalAlignment = VerticalAlignment.Center,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                Margin = new Thickness(0, 10, 0, 10),
-                FontSize = 12,
-                FontWeight = FontWeights.Bold,
-            };
             this._VerticalAlignment = vertical;
             this._HorizontalAlignment = horizantal;
-            Utils._map.GridMap.Children.Add(this._label);
+            BitmapImage bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri($@"pack://application:,,,/SnakesAndLadders;component/Resources/{image_path}");
+            bitmap.EndInit();
+            this._image = new Image { Source = bitmap, Width = 75, Height = 75 };
+            Utils._map.GridMap.Children.Add(this._image);
         }
 
         public string _Name { get; set; }
@@ -33,7 +30,7 @@ namespace SnakesAndLadders
         public int _Position_Cage { get; set; } = 1;
         public VerticalAlignment _VerticalAlignment { get; set; }
         public HorizontalAlignment _HorizontalAlignment { get; set; }
-        private Label _label { get; set; } // метка игрока, пока это просто текст
+        private Image _image { get; set; }
 
         public void SetPosition(int cage_number)
         {
@@ -50,8 +47,8 @@ namespace SnakesAndLadders
                 AlterFormat(false);
             }
             
-            this._label.SetValue(Grid.RowProperty, pos[0]);
-            this._label.SetValue(Grid.ColumnProperty, pos[1]);
+            this._image.SetValue(Grid.RowProperty, pos[0]);
+            this._image.SetValue(Grid.ColumnProperty, pos[1]);
         }
 
         public void SetPosition(int row, int column)
@@ -67,8 +64,8 @@ namespace SnakesAndLadders
             }
 
             this._Position = new int[] { row, column };
-            this._label.SetValue(Grid.RowProperty, row);
-            this._label.SetValue(Grid.ColumnProperty, column);
+            this._image.SetValue(Grid.RowProperty, row);
+            this._image.SetValue(Grid.ColumnProperty, column);
         }
 
         public void AddPosition(int dice_number)
@@ -91,8 +88,8 @@ namespace SnakesAndLadders
             }
 
             this._Position = Utils.GetGridPositionByCageNumber(this._Position_Cage);
-            this._label.SetValue(Grid.RowProperty, this._Position[0]);
-            this._label.SetValue(Grid.ColumnProperty, this._Position[1]);
+            this._image.SetValue(Grid.RowProperty, this._Position[0]);
+            this._image.SetValue(Grid.ColumnProperty, this._Position[1]);
         }
 
         private void AlterFormat(bool enabled)
@@ -102,16 +99,16 @@ namespace SnakesAndLadders
             {
                 foreach (Player item in players)
                 {
-                    item._label.VerticalAlignment = item._VerticalAlignment;
-                    item._label.HorizontalAlignment = item._HorizontalAlignment;
+                    item._image.VerticalAlignment = item._VerticalAlignment;
+                    item._image.HorizontalAlignment = item._HorizontalAlignment;
                 }
             }
             else
             {
                 foreach (Player item in players)
                 {
-                    item._label.VerticalAlignment = VerticalAlignment.Center;
-                    item._label.HorizontalAlignment = HorizontalAlignment.Center;
+                    item._image.VerticalAlignment = VerticalAlignment.Center;
+                    item._image.HorizontalAlignment = HorizontalAlignment.Center;
                 }
             }
         }
