@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\Projects\C#\SnakesAndLadders\SnakesAndLadders\App.xaml
-3-383503906
+3-1428565520
 
-11-1585966570
+11-1608791812
 14-667591151
-DevWindow.xaml;MainWindow.xaml;Map.xaml;
+UI\DevWindow.xaml;UI\MainWindow.xaml;UI\Map.xaml;
 
-False
+True
 
