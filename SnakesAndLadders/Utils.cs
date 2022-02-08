@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,22 +15,20 @@ namespace SnakesAndLadders
         public static Map _map { get; set; }
         public static DevWindow _devWindow { get; set; }
         public static List<Player> _players = new List<Player>();
-        public const int _size = 6; // размер игрового поля, расчитывается по формуле матрицы N * N
-        public static int[,] _cachemap = new int[_size, _size]; // хэширование клеток поля, имеет след. представление [index, [column, row]]
-                                                                       // где index - номер клетки, column - номер колонки, row - номер столбца
+        
         private static int _nextPlayer = 0;
         public static int GetCageNumberByGrid(int row, int column)
         {
-            return _cachemap[row, column];
+            return MapSettings._cachemap[row, column];
         }
 
         public static int[] GetGridPositionByCageNumber(int number)
         {
-            for (int i = 0; i < _size; i++)
+            for (int i = 0; i < MapSettings._size; i++)
             {
-                for (int j = 0; j < _size; j++)
+                for (int j = 0; j < MapSettings._size; j++)
                 {
-                    if(_cachemap[i, j] == number)
+                    if(MapSettings._cachemap[i, j] == number)
                     {
                         int[] arr = { i, j };
                         return arr;
@@ -73,6 +73,32 @@ namespace SnakesAndLadders
             Player player = _players[_nextPlayer];
             _nextPlayer++;
             return player;
+        }
+
+        public static int IsLadder(Player player)
+        {
+            foreach(JToken item in MapSettings._ladders)
+            {
+                if(Convert.ToInt32(item[0]) == player._Position_Cage)
+                {
+                    return Convert.ToInt32(item[1]);
+                }
+            }
+
+            return 0;
+        }
+
+        public static int IsSnake(Player player)
+        {
+            foreach (JToken item in MapSettings._snakes)
+            {
+                if (Convert.ToInt32(item[0]) == player._Position_Cage)
+                {
+                    return Convert.ToInt32(item[1]);
+                }
+            }
+
+            return 0;
         }
     }
 }

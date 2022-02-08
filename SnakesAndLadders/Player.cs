@@ -28,7 +28,7 @@ namespace SnakesAndLadders
         public HorizontalAlignment _HorizontalAlignment { get; set; }
         private Image _image { get; set; }
 
-        public void SetPosition(int cage_number)
+        public void SetPosition(int cage_number, bool silent = false)
         {
             int[] pos = Utils.GetGridPositionByCageNumber(cage_number);
             this._Position = pos;
@@ -45,34 +45,33 @@ namespace SnakesAndLadders
             
             this._image.SetValue(Grid.RowProperty, pos[0]);
             this._image.SetValue(Grid.ColumnProperty, pos[1]);
-            Utils.AddLog($"Игрок {this._Name} перешел на {cage_number}!");
-        }
 
-        public void SetPosition(int row, int column)
-        {
-            this._Position_Cage = Utils.GetCageNumberByGrid(row, column);
-            if (Utils.GetPlayersInCage(this._Position_Cage).Count >= 2)
+            int result = Utils.IsLadder(this);
+            if (result != 0)
             {
-                AlterFormat(true);
-            }
-            else
-            {
-                AlterFormat(false);
+                Utils.AddLog($"Игрок {this._Name} попал на лестницу и перешел на {result}!");
+                this.SetPosition(result);
+                return;
             }
 
-            this._Position = new int[] { row, column };
-            this._image.SetValue(Grid.RowProperty, row);
-            this._image.SetValue(Grid.ColumnProperty, column);
-            Utils.AddLog($"Игрок {this._Name} перешел на {this._Position_Cage}!");
+            result = Utils.IsSnake(this);
+            if (result != 0)
+            {
+                Utils.AddLog($"Игрок {this._Name} попал на змею и перешел на {result}!");
+                this.SetPosition(result);
+                return;
+            }
+
+            if (!silent) { Utils.AddLog($"Игрок {this._Name} перешел на {cage_number}!"); }
         }
 
         public void AddPosition(int dice_number)
         {
             this._Position_Cage += dice_number;
-            if(this._Position_Cage >= Utils._size * Utils._size)
+            if(this._Position_Cage >= MapSettings._size * MapSettings._size)
             {
                 // Win event
-                this._Position_Cage = Utils._size * Utils._size;
+                this._Position_Cage = MapSettings._size * MapSettings._size;
                 MessageBox.Show($"{this._Name} is winner!");
             }
 
@@ -88,7 +87,24 @@ namespace SnakesAndLadders
             this._Position = Utils.GetGridPositionByCageNumber(this._Position_Cage);
             this._image.SetValue(Grid.RowProperty, this._Position[0]);
             this._image.SetValue(Grid.ColumnProperty, this._Position[1]);
+
             Utils.AddLog($"Игрок {this._Name} перешел на {this._Position_Cage}!");
+
+            int result = Utils.IsLadder(this);
+            if (result != 0)
+            {
+                Utils.AddLog($"Игрок {this._Name} попал на лестницу и перешел на {result}!");
+                this.SetPosition(result, true);
+                return;
+            }
+
+            result = Utils.IsSnake(this);
+            if (result != 0)
+            {
+                Utils.AddLog($"Игрок {this._Name} попал на змею и перешел на {result}!");
+                this.SetPosition(result, true);
+                return;
+            }
         }
 
         private void AlterFormat(bool enabled)

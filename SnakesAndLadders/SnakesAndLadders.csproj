@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -55,6 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MapSettings.cs" />
     <Compile Include="Utils.cs" />
     <Page Include="DevWindow.xaml">
       <SubType>Designer</SubType>
@@ -102,6 +106,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -111,13 +116,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\test1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Map.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Map2.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\PlayersIcon\Players_1.png" />
@@ -135,6 +134,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Map6x6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Map5x5.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

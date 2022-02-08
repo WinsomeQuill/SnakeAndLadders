@@ -5,7 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SnakesAndLadders"
         mc:Ignorable="d"
-        Title="Map" Height="840" Width="1100" ResizeMode="CanMinimize">
+        Title="Map"
+        MinHeight="840"
+        Height="840"
+        MaxHeight="840"
+        MinWidth="1100"
+        Width="1200"
+        MaxWidth="1300">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="800"/>
@@ -26,7 +32,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="330"/>
                     <RowDefinition/>
-                    <RowDefinition/>
+                    <RowDefinition Height="16.001"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
@@ -48,8 +54,9 @@
                            Grid.Column="1"
                            Grid.Row="2"
                            Margin="15,0,15,0"
-                           FontSize="14"
+                           FontSize="16"
                            Text="Ходит игрок WinsomeQuill!"
+                           HorizontalAlignment="Center"
                            FontFamily="Arial"
                            FontWeight="Bold"/>
 
