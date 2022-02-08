@@ -18,8 +18,8 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Image Name="Cloud" Height="100" HorizontalAlignment="Center" VerticalAlignment="Top" Source="/Image/Cloud.png"/>
-        <Label Content="Змеи и лестницы" Width="270" Height="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="22"/>
+        <Image Name="Cloud" Height="85" HorizontalAlignment="Center" VerticalAlignment="Top" Source="/Image/Cloud.png"/>
+        <Label Content="Змеи и лестницы" Width="270" Height="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20"/>
         <Button Name="Play" Content="Играть" Grid.Row="1" Style="{StaticResource ButtonLauncher}"  Click="Play_Click"/>
         <Button Name="HowToPlay" Content="Как играть" Grid.Row="2" Style="{StaticResource ButtonLauncher}"  Click="HowToPlay_Click"/>
         <Button Name="Settings" Content="Настройки" Grid.Row="3" Style="{StaticResource ButtonLauncher}"  Click="Settings_Click"/>

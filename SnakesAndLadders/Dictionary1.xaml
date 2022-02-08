@@ -44,7 +44,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Background="{TemplateBinding Background}" CornerRadius="10" BorderBrush="DarkGray"  BorderThickness="1.5" Width="40" Height="30"  >
+                    <Border Background="{TemplateBinding Background}" CornerRadius="10" BorderBrush="DarkGray"  BorderThickness="1.5" Width="60" Height="30"  >
                         <ContentControl Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Border>
                 </ControlTemplate>
@@ -56,5 +56,17 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+
+    <Style TargetType="TextBox" x:Key="Auth">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="black"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="10" BorderBrush="LightGray"  BorderThickness="1.5" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>

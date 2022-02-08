@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SnakesAndLadders"
         mc:Ignorable="d"
-        Title="Авторизация" Height="300" Width="500" ResizeMode="CanMinimize">
+        Title="Авторизация" Height="300" Width="400" ResizeMode="CanMinimize">
     <Grid>
         <Grid.Background>
 
@@ -17,9 +17,7 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Image Source="/Image/Cloud.png" />
-
-          
-   
+        
         <Label Content="Выберите количество игроков" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" />
         <ComboBox Grid.Row="1" Width="100" Height="30" VerticalContentAlignment="Center" VerticalAlignment="Top" >
             <ComboBoxItem IsSelected="True">
@@ -36,7 +34,7 @@
             </Image>
         </Button>
         
-        <Button Content="Ok" Style="{StaticResource launcher}" Grid.Row="1"  />
+        <Button Content="Ok" Style="{StaticResource launcher}" Grid.Row="1" Click="Button_Click" />
 
        
     </Grid>

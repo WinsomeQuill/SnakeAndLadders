@@ -22,7 +22,7 @@
                 </Image.Source>
             </Image>
         </Button>
-        <Label Content="Правила игры" FontSize="30" HorizontalAlignment="Center"></Label>
+        <Label Content="Правила игры" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
         <FlowDocumentReader Margin="80,60,80,-32">
             <FlowDocument FontSize="17">
                 

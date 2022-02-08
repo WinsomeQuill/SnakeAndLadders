@@ -58,3 +58,7 @@ C:\Users\novokhatskii-aa\Downloads\SnakeAndLadders-Andrey\SnakesAndLadders\obj\D
 C:\Users\novokhatskii-aa\Downloads\SnakeAndLadders-Andrey\SnakesAndLadders\obj\Debug\SnakesAndLadders.csproj.CoreCompileInputs.cache
 C:\Users\novokhatskii-aa\Downloads\SnakeAndLadders-Andrey\SnakesAndLadders\obj\Debug\SnakesAndLadders.exe
 C:\Users\novokhatskii-aa\Downloads\SnakeAndLadders-Andrey\SnakesAndLadders\obj\Debug\SnakesAndLadders.pdb
+C:\Users\novokhatskii-aa\Downloads\SnakeAndLadders-Andrey\SnakesAndLadders\obj\Debug\Auth\Authorization.g.cs
+C:\Users\novokhatskii-aa\Downloads\SnakeAndLadders-Andrey\SnakesAndLadders\obj\Debug\Auth\Authorization.baml
+C:\Users\novokhatskii-aa\Downloads\SnakeAndLadders-Andrey\SnakesAndLadders\obj\Debug\SelectionMaps\SelectMaps.g.cs
+C:\Users\novokhatskii-aa\Downloads\SnakeAndLadders-Andrey\SnakesAndLadders\obj\Debug\SelectionMaps\SelectMaps.baml

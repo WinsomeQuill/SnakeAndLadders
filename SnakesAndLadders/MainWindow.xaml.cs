@@ -31,5 +31,12 @@ namespace SnakesAndLadders
             launcher.Show();
             this.Close();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            SelectionMaps.SelectMaps selectMaps = new SelectionMaps.SelectMaps();
+            selectMaps.Show();
+            this.Close();
+        }
     }
 }
