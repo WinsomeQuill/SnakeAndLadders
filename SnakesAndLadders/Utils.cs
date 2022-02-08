@@ -11,10 +11,12 @@ namespace SnakesAndLadders
     public static class Utils
     {
         public static Map _map { get; set; }
+        public static DevWindow _devWindow { get; set; }
         public static List<Player> _players = new List<Player>();
-        public const int _size = 5; // размер игрового поля, расчитывается по формуле матрицы N * N
+        public const int _size = 6; // размер игрового поля, расчитывается по формуле матрицы N * N
         public static int[,] _cachemap = new int[_size, _size]; // хэширование клеток поля, имеет след. представление [index, [column, row]]
                                                                        // где index - номер клетки, column - номер колонки, row - номер столбца
+        private static int _nextPlayer = 0;
         public static int GetCageNumberByGrid(int row, int column)
         {
             return _cachemap[row, column];
@@ -47,6 +49,30 @@ namespace SnakesAndLadders
                 }
             }
             return players;
+        }
+
+        public static void AddLog(string message)
+        {
+            _map.TextBlockLog.Text += message + "\n";
+            _devWindow.UpdateScrollViewerDev2();
+        }
+
+        public static int Dice()
+        {
+            Random random = new Random();
+            int number_cage = random.Next(1, 7);
+            return number_cage;
+        }
+
+        public static Player WalkNow()
+        {
+            if (_nextPlayer > _players.Count - 1)
+            {
+                _nextPlayer = 0;
+            }
+            Player player = _players[_nextPlayer];
+            _nextPlayer++;
+            return player;
         }
     }
 }

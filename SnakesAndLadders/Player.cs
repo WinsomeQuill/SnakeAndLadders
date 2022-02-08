@@ -17,11 +17,7 @@ namespace SnakesAndLadders
             this._Name = name;
             this._VerticalAlignment = vertical;
             this._HorizontalAlignment = horizantal;
-            BitmapImage bitmap = new BitmapImage();
-            bitmap.BeginInit();
-            bitmap.UriSource = new Uri($@"pack://application:,,,/SnakesAndLadders;component/Resources/{image_path}");
-            bitmap.EndInit();
-            this._image = new Image { Source = bitmap, Width = 75, Height = 75 };
+            this._image = new Image { Source = new BitmapImage(new Uri($@"pack://application:,,,/SnakesAndLadders;component/Resources/PlayersIcon/{image_path}")), Width = 75, Height = 75 };
             Utils._map.GridMap.Children.Add(this._image);
         }
 
@@ -49,6 +45,7 @@ namespace SnakesAndLadders
             
             this._image.SetValue(Grid.RowProperty, pos[0]);
             this._image.SetValue(Grid.ColumnProperty, pos[1]);
+            Utils.AddLog($"Игрок {this._Name} перешел на {cage_number}!");
         }
 
         public void SetPosition(int row, int column)
@@ -66,6 +63,7 @@ namespace SnakesAndLadders
             this._Position = new int[] { row, column };
             this._image.SetValue(Grid.RowProperty, row);
             this._image.SetValue(Grid.ColumnProperty, column);
+            Utils.AddLog($"Игрок {this._Name} перешел на {this._Position_Cage}!");
         }
 
         public void AddPosition(int dice_number)
@@ -90,6 +88,7 @@ namespace SnakesAndLadders
             this._Position = Utils.GetGridPositionByCageNumber(this._Position_Cage);
             this._image.SetValue(Grid.RowProperty, this._Position[0]);
             this._image.SetValue(Grid.ColumnProperty, this._Position[1]);
+            Utils.AddLog($"Игрок {this._Name} перешел на {this._Position_Cage}!");
         }
 
         private void AlterFormat(bool enabled)

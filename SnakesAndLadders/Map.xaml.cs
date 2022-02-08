@@ -42,11 +42,13 @@ namespace SnakesAndLadders
                 GridMap.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
                 for (int j = 0; j < Utils._size; j++)
                 {
-                    GridMap.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(this.Width / Utils._size, GridUnitType.Pixel) }); //костыль, но работает :/
+                    GridMap.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(800 / Utils._size, GridUnitType.Pixel) }); //костыль, но работает :/
                     Utils._cachemap[i, j] = count += 1;
                 }
             }
             Format();
+            ImageMap.Source = new BitmapImage(new Uri(@"pack://application:,,,/SnakesAndLadders;component/Resources/Map6x6.png"));
+            ImageMap.Height = 800;
         }
 
         private void Format()
@@ -75,8 +77,8 @@ namespace SnakesAndLadders
         private void AddCage(int row, int column)
         {
             Border myBorder1 = new Border();
-            myBorder1.Background = Brushes.SkyBlue;
-            myBorder1.BorderBrush = Brushes.Black;
+            //myBorder1.Background = Brushes.SkyBlue;
+            myBorder1.BorderBrush = Brushes.Red;
             myBorder1.BorderThickness = new Thickness(1);
             Label label = new Label
             {
@@ -86,6 +88,15 @@ namespace SnakesAndLadders
             GridMap.Children.Add(myBorder1);
             myBorder1.SetValue(Grid.ColumnProperty, column);
             myBorder1.SetValue(Grid.RowProperty, row);
+        }
+
+        private void ButtonDiceNext_Click(object sender, RoutedEventArgs e)
+        {
+            int dice = Utils.Dice();
+            ImageCubeIcon.Source = new BitmapImage(new Uri($@"pack://application:,,,/SnakesAndLadders;component/Resources/CubesIcon/Cube_{dice}.png"));
+            Player player = Utils.WalkNow();
+            player.AddPosition(dice);
+            TextBlockInformer.Text = $"Сейчас ходит игрок \"{player._Name}\"";
         }
     }
 }

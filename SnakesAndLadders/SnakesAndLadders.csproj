@@ -113,5 +113,28 @@
   <ItemGroup>
     <Resource Include="Resources\test1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Map.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Map2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\PlayersIcon\Players_1.png" />
+    <Resource Include="Resources\PlayersIcon\Players_2.png" />
+    <Resource Include="Resources\PlayersIcon\Players_3.png" />
+    <Resource Include="Resources\PlayersIcon\Players_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\CubesIcon\Cube_1.png" />
+    <Resource Include="Resources\CubesIcon\Cube_2.png" />
+    <Resource Include="Resources\CubesIcon\Cube_3.png" />
+    <Resource Include="Resources\CubesIcon\Cube_4.png" />
+    <Resource Include="Resources\CubesIcon\Cube_5.png" />
+    <Resource Include="Resources\CubesIcon\Cube_6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Map6x6.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

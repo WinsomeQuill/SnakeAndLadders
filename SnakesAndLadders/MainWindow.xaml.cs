@@ -25,15 +25,18 @@ namespace SnakesAndLadders
             InitializeComponent();
             Map map = new Map();
             Utils._map = map;
+            Utils._players.Add(new Player("Test", VerticalAlignment.Bottom, HorizontalAlignment.Right, $"Players_1.png"));
+            Utils._players.Add(new Player("WinsomeQuill", VerticalAlignment.Top, HorizontalAlignment.Right, $"Players_2.png"));
+            DevWindow dev = new DevWindow();
             map.Show();
-            Utils._players.Add(new Player("Test", VerticalAlignment.Bottom, HorizontalAlignment.Right, "test1.png"));
-            Utils._players.Add(new Player("WinsomeQuill", VerticalAlignment.Top, HorizontalAlignment.Right, "test1.png"));
-            new DevWindow().Show();
+            dev.Show();
+            Utils._devWindow = dev;
             foreach (Player item in Utils._players)
             {
                 item.SetPosition(1);
             }
             Close();
+            Utils._map.TextBlockInformer.Text = $"Сейчас ходит игрок \"{Utils.WalkNow()._Name}\"";
         }
     }
 }

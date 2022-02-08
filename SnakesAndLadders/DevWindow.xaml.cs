@@ -55,7 +55,7 @@ namespace SnakesAndLadders
             }
         }
 
-        private void UpdateScrollViewerDev2()
+        public void UpdateScrollViewerDev2()
         {
             StackPanelDev2.Children.Clear();
             foreach (Player item in Utils._players)
