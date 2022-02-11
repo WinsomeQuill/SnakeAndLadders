@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SnakesAndLadders.UI"
         mc:Ignorable="d"
-        Title="Авторизация" Height="400" Width="500">
+        Title="Авторизация" Height="400" Width="500" Closing="Window_Closing">
 
     <Window.Resources>
         <ResourceDictionary>

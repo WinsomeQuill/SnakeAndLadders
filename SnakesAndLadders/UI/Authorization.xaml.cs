@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -72,7 +73,29 @@ namespace SnakesAndLadders.UI
                 if (GridStackAuth.Children[i] is TextBox)
                 {
                     TextBox item = GridStackAuth.Children[i] as TextBox;
-                    switch(count)
+
+                    if (item.Text.Length == 0)
+                    {
+                        TextBoxWarning(item);
+                        MessageBox.Show("Заполните все поля!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+
+                    if (item.Text.Length < 3)
+                    {
+                        TextBoxWarning(item);
+                        MessageBox.Show("Имя игрока должно состоять минимум из трёх символов!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+
+                    if (item.Text.Length > 15)
+                    {
+                        TextBoxWarning(item);
+                        MessageBox.Show($"У \"Игрок {count+1}\" слишком длинное имя!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+
+                    switch (count)
                     {
                         case 0:
                             Utils._players.Add(new Player(item.Text, VerticalAlignment.Bottom, HorizontalAlignment.Right, $"Players_1.png"));
@@ -108,6 +131,28 @@ namespace SnakesAndLadders.UI
             }
             Utils._map.TextBlockInformer.Text = $"Сейчас ходит игрок \"{Utils._players[0]._Name}\"";
             Close();
+        }
+
+        private void TextBoxWarning(TextBox textBox)
+        {
+            Task.Run(async () =>
+            {
+                await Dispatcher.InvokeAsync(async () =>
+                {
+                    textBox.Background = new SolidColorBrush(Colors.IndianRed);
+                    await Task.Delay(500);
+                    textBox.Background = new SolidColorBrush(Colors.White);
+                    await Task.Delay(500);
+                    textBox.Background = new SolidColorBrush(Colors.IndianRed);
+                    await Task.Delay(500);
+                    textBox.Background = new SolidColorBrush(Colors.White);
+                });
+            });
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }
