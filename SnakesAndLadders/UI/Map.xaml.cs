@@ -95,13 +95,28 @@ namespace SnakesAndLadders
         {
             int dice = Utils.Dice();
             ImageCubeIcon.Source = new BitmapImage(new Uri($@"pack://application:,,,/SnakesAndLadders;component/Resources/CubesIcon/Cube_{dice}.png"));
-            int index = Utils.WalkNow();
-            Utils._players[index].AddPosition(dice);
-            if(Utils._players.Count != 0)
+            Utils._currentPlayer += 1;
+
+            if (Utils._currentPlayer != 0)
             {
-                TextBlockInformer.Text = $"Сейчас ходит игрок \"{Utils._players[index]._Name}\"";
-                Utils._nextPlayer = index + 1;
+                Utils._players[Utils._currentPlayer - 1].AddPosition(dice);
             }
+            else
+            {
+                Utils._players[Utils._currentPlayer].AddPosition(dice);
+            }
+
+            if (Utils._players.Count == 0)
+            {
+                return;
+            }
+
+            if (Utils._currentPlayer >= Utils._players.Count)
+            {
+                Utils._currentPlayer = 0;
+            }
+            TextBlockInformer.Text = $"Сейчас ходит игрок \"{Utils._players[Utils._currentPlayer]._Name}\"";
+
         }
     }
 }

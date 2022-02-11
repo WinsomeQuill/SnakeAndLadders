@@ -16,8 +16,7 @@ namespace SnakesAndLadders
         public static DevWindow _devWindow { get; set; }
         public static bool _debug = false;
         public static List<Player> _players = new List<Player>();
-        
-        public static int _nextPlayer = 0;
+        public static int _currentPlayer = 0;
         public static int GetCageNumberByGrid(int row, int column)
         {
             return MapSettings._cachemap[row, column];
@@ -66,16 +65,6 @@ namespace SnakesAndLadders
             Random random = new Random();
             int number_cage = random.Next(1, 7);
             return number_cage;
-        }
-
-        public static int WalkNow()
-        {
-            if (_nextPlayer > _players.Count - 1)
-            {
-                _nextPlayer = 0;
-            }
-            
-            return _nextPlayer;
         }
 
         public static int IsLadder(Player player)

@@ -77,7 +77,7 @@ namespace SnakesAndLadders
                 new Start().Show();
                 Utils._map.Close();
                 Utils._players.Clear();
-                Utils._nextPlayer = 0;
+                Utils._currentPlayer = 0;
                 if(Utils._debug)
                 {
                     Utils._devWindow.Close();
