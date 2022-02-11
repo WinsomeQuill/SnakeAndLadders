@@ -1,21 +1,24 @@
 
 {
-	"Map": "default",
+	"Map": "Default",
 	"Maps": {
-		"default": {
-			"name": "Стандартная",
+		"Default": {
+			"Image": "Map.png",
+			"Name": "Default",
 			"Size": 5,
 			"Snakes": [[14, 4], [19, 8], [22, 20], [24, 16]],
 			"Ladders": [[3, 11], [10, 12], [9, 18], [6, 17]],
 		},
-		"jungle": {
-			"name": "Джунгли",
+		"Jungle": {
+			"Image": "Map5x5.png",
+			"Name": "Jungle",
 			"Size": 5,
 			"Snakes": [[24, 14], [15, 7], [11, 3]],
 			"Ladders": [[20, 23], [4, 13], [2, 8]],
 		},
-		"dungeon": {
-			"name": "Подземелье",
+		"Dungeon": {
+			"Image": "Map6x6.png",
+			"Name": "Dungeon",
 			"Size": 6,
 			"Snakes": [[34, 20], [32, 19], [25, 13], [21, 8], [18, 5]],
 			"Ladders": [[3, 10], [2, 13], [9, 20], [16, 22], [14, 27]],

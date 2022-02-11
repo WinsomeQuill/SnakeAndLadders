@@ -29,5 +29,12 @@ namespace SnakesAndLadders.UI
             new Start().Show();
             this.Close();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MapSettings._players_count = ComboBoxPlayersCount.SelectedIndex + 2;
+            new SelectMaps().Show();
+            this.Close();
+        }
     }
 }

@@ -14,9 +14,10 @@ namespace SnakesAndLadders
     {
         public static Map _map { get; set; }
         public static DevWindow _devWindow { get; set; }
+        public static bool _debug = false;
         public static List<Player> _players = new List<Player>();
         
-        private static int _nextPlayer = 0;
+        public static int _nextPlayer = 0;
         public static int GetCageNumberByGrid(int row, int column)
         {
             return MapSettings._cachemap[row, column];
@@ -54,7 +55,10 @@ namespace SnakesAndLadders
         public static void AddLog(string message)
         {
             _map.TextBlockLog.Text += message + "\n";
-            _devWindow.UpdateScrollViewerDev2();
+            if(_debug)
+            {
+                _devWindow.UpdateScrollViewerDev2();
+            }
         }
 
         public static int Dice()
@@ -64,15 +68,14 @@ namespace SnakesAndLadders
             return number_cage;
         }
 
-        public static Player WalkNow()
+        public static int WalkNow()
         {
             if (_nextPlayer > _players.Count - 1)
             {
                 _nextPlayer = 0;
             }
-            Player player = _players[_nextPlayer];
-            _nextPlayer++;
-            return player;
+            
+            return _nextPlayer;
         }
 
         public static int IsLadder(Player player)

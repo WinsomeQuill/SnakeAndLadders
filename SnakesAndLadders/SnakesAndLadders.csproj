@@ -69,6 +69,9 @@
     <Compile Include="UI\Map.xaml.cs">
       <DependentUpon>Map.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\SelectMaps.xaml.cs">
+      <DependentUpon>SelectMaps.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\SelectPlayersCount.xaml.cs">
       <DependentUpon>SelectPlayersCount.xaml</DependentUpon>
     </Compile>
@@ -99,6 +102,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Map.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\SelectMaps.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -152,11 +159,6 @@
     <Resource Include="Resources\CubesIcon\Cube_4.png" />
     <Resource Include="Resources\CubesIcon\Cube_5.png" />
     <Resource Include="Resources\CubesIcon\Cube_6.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Maps\Map.png" />
-    <Resource Include="Resources\Maps\Map5x5.png" />
-    <Resource Include="Resources\Maps\Map6x6.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\Background.jpg" />

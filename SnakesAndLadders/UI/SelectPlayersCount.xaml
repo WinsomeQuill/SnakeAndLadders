@@ -14,47 +14,31 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    
+
     <Grid>
+        <Grid.Background>
+
+            <ImageBrush ImageSource="../Resources/Images/photo.jpg"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-    
-        <Grid.Background>
-            <ImageBrush ImageSource="../Resources/Images/photo.jpg"/>
-        </Grid.Background>
-        
         <Image Source="../Resources/Images/Cloud.png" />
 
-        <Label Content="Выберите количество игроков"
-               Grid.Row="0"
-               VerticalAlignment="Center"
-               HorizontalAlignment="Center"
-               FontSize="16" />
-        
-        <ComboBox Grid.Row="1"
-                  Width="100"
-                  Height="30"
-                  VerticalContentAlignment="Center"
-                  VerticalAlignment="Top" >
-            
+        <Label Content="Выберите количество игроков" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" />
+        <ComboBox x:Name="ComboBoxPlayersCount" Grid.Row="1" Width="100" Height="30" VerticalContentAlignment="Center" VerticalAlignment="Top" >
             <ComboBoxItem IsSelected="True">
                 <TextBlock>2 игрока</TextBlock>
             </ComboBoxItem>
-            <TextBlock>3 игрока</TextBlock>
-            <TextBlock>4 игрока</TextBlock>
+            <ComboBoxItem>
+                <TextBlock>3 игрока</TextBlock>
+            </ComboBoxItem>
+            <ComboBoxItem>
+                <TextBlock>4 игрока</TextBlock>
+            </ComboBoxItem>
         </ComboBox>
-        
-        <Button Name="Back"
-                Width="35"
-                Height="35"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Background="Transparent"
-                Click="Back_Click"
-                BorderThickness="0">
-            
+        <Button  Name="Back" Width="35" Height="35" HorizontalAlignment="Left" VerticalAlignment="Top" Background="Transparent"  Click="Back_Click" BorderThickness="0">
             <Image>
                 <Image.Source>
                     <FormatConvertedBitmap Source="../Resources/Images/Exit.png"/>
@@ -62,9 +46,8 @@
             </Image>
         </Button>
 
-        <Button Content="Ok" 
-                Style="{StaticResource launcher}"
-                Grid.Row="1"  />
+        <Button Content="Ok" Style="{StaticResource launcher}" Grid.Row="1" Click="Button_Click" />
+
 
     </Grid>
 </Window>

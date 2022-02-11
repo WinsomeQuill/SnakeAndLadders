@@ -71,3 +71,5 @@ E:\Projects\C#\SnakesAndLadders\SnakesAndLadders\bin\Debug\Newtonsoft.Json.dll
 E:\Projects\C#\SnakesAndLadders\SnakesAndLadders\bin\Debug\Newtonsoft.Json.xml
 E:\Projects\C#\SnakesAndLadders\SnakesAndLadders\obj\Debug\SnakesAndLadders.csproj.CopyComplete
 E:\Projects\C#\SnakesAndLadders\SnakesAndLadders\obj\Debug\Resources\Styles\Dictionary1.baml
+E:\Projects\C#\SnakesAndLadders\SnakesAndLadders\obj\Debug\UI\SelectMaps.g.cs
+E:\Projects\C#\SnakesAndLadders\SnakesAndLadders\obj\Debug\UI\SelectMaps.baml

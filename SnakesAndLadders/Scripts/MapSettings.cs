@@ -4,11 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace SnakesAndLadders
 {
     public static class MapSettings
     {
+        public static Image _image { get; set; }
+        public static int _players_count { get; set; }
         public static int _size { get; set; }
         public static string _name { get; set; }
         public static JToken _snakes {  get; set; }

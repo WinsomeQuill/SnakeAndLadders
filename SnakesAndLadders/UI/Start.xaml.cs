@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using Newtonsoft.Json.Linq;
+using System.IO;
+using System.Windows;
 
 
 namespace SnakesAndLadders.UI
@@ -10,6 +12,15 @@ namespace SnakesAndLadders.UI
     {
         public Start()
         {
+            InitializeComponent();
+
+            if (!File.Exists("Maps.json"))
+            {
+                MessageBox.Show("Конфиг Maps.json не найден!");
+                Close();
+                return;
+            }
+
             InitializeComponent();
         }
 

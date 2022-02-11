@@ -38,7 +38,8 @@ namespace SnakesAndLadders
                 }
             }
             Format();
-            ImageMap.Source = new BitmapImage(new Uri(@"pack://application:,,,/SnakesAndLadders;component/Resources/Map.png"));
+
+            ImageMap.Source = MapSettings._image.Source;
 
             for (int i = 0; i < MapSettings._size; i++)
             {
@@ -74,26 +75,33 @@ namespace SnakesAndLadders
 
         private void AddCage(int row, int column)
         {
-            Border myBorder1 = new Border();
-            myBorder1.BorderBrush = Brushes.Red;
-            myBorder1.BorderThickness = new Thickness(1);
-            Label label = new Label
+            if(Utils._debug)
             {
-                Content = $"Text {row}:{column} [{MapSettings._cachemap[row, column]}]"
-            };
-            myBorder1.Child = label;
-            GridMap.Children.Add(myBorder1);
-            myBorder1.SetValue(Grid.ColumnProperty, column);
-            myBorder1.SetValue(Grid.RowProperty, row);
+                Border myBorder1 = new Border();
+                myBorder1.BorderBrush = Brushes.Red;
+                myBorder1.BorderThickness = new Thickness(1);
+                Label label = new Label
+                {
+                    Content = $"Text {row}:{column} [{MapSettings._cachemap[row, column]}]"
+                };
+                myBorder1.Child = label;
+                GridMap.Children.Add(myBorder1);
+                myBorder1.SetValue(Grid.ColumnProperty, column);
+                myBorder1.SetValue(Grid.RowProperty, row);
+            }
         }
 
         private void ButtonDiceNext_Click(object sender, RoutedEventArgs e)
         {
             int dice = Utils.Dice();
             ImageCubeIcon.Source = new BitmapImage(new Uri($@"pack://application:,,,/SnakesAndLadders;component/Resources/CubesIcon/Cube_{dice}.png"));
-            Player player = Utils.WalkNow();
-            player.AddPosition(dice);
-            TextBlockInformer.Text = $"Сейчас ходит игрок \"{player._Name}\"";
+            int index = Utils.WalkNow();
+            Utils._players[index].AddPosition(dice);
+            if(Utils._players.Count != 0)
+            {
+                TextBlockInformer.Text = $"Сейчас ходит игрок \"{Utils._players[index]._Name}\"";
+                Utils._nextPlayer = index + 1;
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SnakesAndLadders.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -71,8 +72,17 @@ namespace SnakesAndLadders
             if(this._Position_Cage >= MapSettings._size * MapSettings._size)
             {
                 // Win event
-                this._Position_Cage = MapSettings._size * MapSettings._size;
-                MessageBox.Show($"{this._Name} is winner!");
+                this.SetPosition(MapSettings._size * MapSettings._size, true);
+                MessageBox.Show($"Игрок {this._Name} выиграл!", "Конец игры!", MessageBoxButton.OK, MessageBoxImage.Information);
+                new Start().Show();
+                Utils._map.Close();
+                Utils._players.Clear();
+                Utils._nextPlayer = 0;
+                if(Utils._debug)
+                {
+                    Utils._devWindow.Close();
+                }
+                return;
             }
 
             if (Utils.GetPlayersInCage(this._Position_Cage).Count >= 2)
