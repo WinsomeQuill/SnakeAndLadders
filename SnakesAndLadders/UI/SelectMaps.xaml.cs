@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -25,26 +26,39 @@ namespace SnakesAndLadders.UI
         public SelectMaps()
         {
             InitializeComponent();
-            string myJsonString = File.ReadAllText("Maps.json");
-            JObject myJObject = JObject.Parse(myJsonString);
-
-            foreach (var item in myJObject.SelectToken("Maps"))
+            try
             {
-                ComboBoxSelectMap.Items.Add(new ComboBoxItem
-                {
-                    Tag = $"{item.FirstOrDefault().SelectToken("Name")}",
-                    Content = $"{item.FirstOrDefault().SelectToken("Name")}",
-                });
+                string myJsonString = File.ReadAllText("Maps.json");
+                JObject myJObject = JObject.Parse(myJsonString);
 
-                maps.Add(new Image
+                foreach (var item in myJObject.SelectToken("Maps"))
                 {
-                    Source = new BitmapImage(new Uri($@"{Directory.GetCurrentDirectory()}/maps/{item.FirstOrDefault().SelectToken("Image")}")),
-                    Tag = $"{item.FirstOrDefault().SelectToken("Name")}",
-                });
+                    ComboBoxSelectMap.Items.Add(new ComboBoxItem
+                    {
+                        Tag = $"{item.FirstOrDefault().SelectToken("Name")}",
+                        Content = $"{item.FirstOrDefault().SelectToken("Name")}",
+                    });
+
+                    maps.Add(new Image
+                    {
+                        Source = new BitmapImage(new Uri($@"{Directory.GetCurrentDirectory()}/maps/{item.FirstOrDefault().SelectToken("Image")}")),
+                        Tag = $"{item.FirstOrDefault().SelectToken("Name")}",
+                    });
+                }
+
+                (ComboBoxSelectMap.Items[0] as ComboBoxItem).IsSelected = true;
+                ImageMapPreview.Source = maps[0].Source;
             }
-
-            (ComboBoxSelectMap.Items[0] as ComboBoxItem).IsSelected = true;
-            ImageMapPreview.Source = maps[0].Source;
+            catch(JsonReaderException)
+            {
+                MessageBox.Show($"Произошла ошибка при чтении Maps.json!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                Environment.Exit(1);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Произошла неизвестная ошибка! {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                Environment.Exit(1);
+            }
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
