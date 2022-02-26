@@ -98,7 +98,7 @@ namespace SnakesAndLadders.UI
                     {
                         case 0:
                             Utils._players.Add(new Player(item.Text, VerticalAlignment.Bottom, HorizontalAlignment.Right, $"Players_1.png"));
-                       break;
+                            break;
 
                         case 1:
                             Utils._players.Add(new Player(item.Text, VerticalAlignment.Top, HorizontalAlignment.Right, $"Players_2.png"));

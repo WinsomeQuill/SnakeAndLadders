@@ -91,32 +91,47 @@ namespace SnakesAndLadders
             }
         }
 
-        private void ButtonDiceNext_Click(object sender, RoutedEventArgs e)
+        private async void ButtonDiceNext_Click(object sender, RoutedEventArgs e)
         {
+            ButtonDiceNext.IsEnabled = false;
             int dice = Utils.Dice();
-            ImageCubeIcon.Source = new BitmapImage(new Uri($@"pack://application:,,,/SnakesAndLadders;component/Resources/CubesIcon/Cube_{dice}.png"));
-            Utils._currentPlayer += 1;
-
-            if (Utils._currentPlayer != 0)
+            await Task.Run(async () =>
             {
-                Utils._players[Utils._currentPlayer - 1].AddPosition(dice);
-            }
-            else
-            {
-                Utils._players[Utils._currentPlayer].AddPosition(dice);
-            }
+                await Dispatcher.InvokeAsync(async () =>
+                {
+                    Random rnd = new Random();
+                    int value = rnd.Next(1, 4);
+                    for (int i = 0; i < value; i++)
+                    {
+                        value = rnd.Next(1, 7);
+                        ImageCubeIcon.Source = new BitmapImage(new Uri($@"pack://application:,,,/SnakesAndLadders;component/Resources/CubesIcon/Cube_{value}.png"));
+                        await Task.Delay(600);
+                    }
+                    ImageCubeIcon.Source = new BitmapImage(new Uri($@"pack://application:,,,/SnakesAndLadders;component/Resources/CubesIcon/Cube_{dice}.png"));
+                    ButtonDiceNext.IsEnabled = true;
 
-            if (Utils._players.Count == 0)
-            {
-                return;
-            }
+                    Utils._currentPlayer += 1;
+                    if (Utils._currentPlayer != 0)
+                    {
+                        Utils._players[Utils._currentPlayer - 1].AddPosition(dice);
+                    }
+                    else
+                    {
+                        Utils._players[Utils._currentPlayer].AddPosition(dice);
+                    }
 
-            if (Utils._currentPlayer >= Utils._players.Count)
-            {
-                Utils._currentPlayer = 0;
-            }
-            TextBlockInformer.Text = $"Сейчас ходит игрок \"{Utils._players[Utils._currentPlayer]._Name}\"";
+                    if (Utils._players.Count == 0)
+                    {
+                        return;
+                    }
 
+                    if (Utils._currentPlayer >= Utils._players.Count)
+                    {
+                        Utils._currentPlayer = 0;
+                    }
+                    TextBlockInformer.Text = $"Сейчас ходит игрок \"{Utils._players[Utils._currentPlayer]._Name}\"";
+                });
+            });
         }
     }
 }
