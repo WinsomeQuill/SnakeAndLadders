@@ -62,7 +62,6 @@ namespace SnakesAndLadders.UI
                 }
             }
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Map map = new Map();
@@ -124,12 +123,12 @@ namespace SnakesAndLadders.UI
                 Utils._devWindow = dev;
             }
 
-            map.Show();
             foreach (Player item in Utils._players)
             {
                 item.SetPosition(1, true);
             }
             Utils._map.TextBlockInformer.Text = $"Сейчас ходит игрок \"{Utils._players[0]._Name}\"";
+            map.Show();
             Close();
         }
 
@@ -148,11 +147,6 @@ namespace SnakesAndLadders.UI
                     textBox.Background = new SolidColorBrush(Colors.White);
                 });
             });
-        }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            Environment.Exit(0);
         }
     }
 }
