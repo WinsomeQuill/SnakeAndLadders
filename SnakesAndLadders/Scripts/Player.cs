@@ -19,7 +19,7 @@ namespace SnakesAndLadders
     {
         public string _Name { get; set; }
         public int[] _Position { get; set; } = { 0, 0 };
-        public int _Position_Cage { get; set; } = 1;
+        public int _PositionCage { get; set; } = 0;
         public VerticalAlignment _VerticalAlignment { get; set; }
         public HorizontalAlignment _HorizontalAlignment { get; set; }
         private Image _Image { get; set; }
@@ -29,7 +29,8 @@ namespace SnakesAndLadders
             _Name = name;
             _VerticalAlignment = vertical;
             _HorizontalAlignment = horizantal;
-            _Image = new Image { Source = new BitmapImage(new Uri($@"pack://application:,,,/SnakesAndLadders;component/Resources/PlayersIcon/{image_path}")), 
+            _Image = new Image { Source = new BitmapImage(
+                new Uri($@"pack://application:,,,/SnakesAndLadders;component/Resources/PlayersIcon/{image_path}")), 
                 Width = 75, Height = 75 };
             Init();
         }
@@ -48,15 +49,16 @@ namespace SnakesAndLadders
             };
 
             _Image.Effect = shadow;
+            _Image.Visibility = Visibility.Hidden;
         }
 
         public void SetPosition(int cage_number, bool silent = false)
         {
             int[] pos = Utils.GetGridPositionByCageNumber(cage_number);
             _Position = pos;
-            _Position_Cage = cage_number;
+            _PositionCage = cage_number;
 
-            if (Utils.GetPlayersInCage(_Position_Cage).Count >= 2)
+            if (Utils.GetPlayersInCage(_PositionCage).Count >= 2)
             {
                 AlterFormat(true);
             }
@@ -96,15 +98,16 @@ namespace SnakesAndLadders
             {
                 await Application.Current.Dispatcher.InvokeAsync(async () =>
                 {
+                    if (_Image.Visibility == Visibility.Hidden) _Image.Visibility = Visibility.Visible;
+
                     for (int i = 0; i < dice_number; i++)
                     {
-                        _Position_Cage += 1;
-                        Utils.AddLog($"[DEBUG] {_Position_Cage} / {i}");
-                        _Position = Utils.GetGridPositionByCageNumber(_Position_Cage);
+                        _PositionCage += 1;
+                        _Position = Utils.GetGridPositionByCageNumber(_PositionCage);
                         _Image.SetValue(Grid.RowProperty, _Position[0]);
                         _Image.SetValue(Grid.ColumnProperty, _Position[1]);
 
-                        if (_Position_Cage >= MapSettings._size * MapSettings._size)
+                        if (_PositionCage >= MapSettings._size * MapSettings._size)
                         {
                             // Win event
                             SetPosition(MapSettings._size * MapSettings._size, true);
@@ -120,7 +123,7 @@ namespace SnakesAndLadders
                             return;
                         }
 
-                        if (Utils.GetPlayersInCage(_Position_Cage).Count >= 2)
+                        if (Utils.GetPlayersInCage(_PositionCage).Count >= 2)
                         {
                             AlterFormat(true);
                         }
@@ -131,7 +134,8 @@ namespace SnakesAndLadders
                         await Task.Delay(500);
                     }
 
-                    Utils.AddLog($"Игрок {_Name} перешел на {_Position_Cage}!");
+                    Utils.AddLog($"Игрок {_Name} перешел на {_PositionCage}!");
+                    Utils._map.ButtonDiceNext.IsEnabled = true;
 
                     int result = Utils.IsLadder(this);
                     if (result != 0)
@@ -154,7 +158,7 @@ namespace SnakesAndLadders
 
         private void AlterFormat(bool enabled)
         {
-            List<Player> players = Utils.GetPlayersInCage(_Position_Cage);
+            List<Player> players = Utils.GetPlayersInCage(_PositionCage);
             if (enabled)
             {
                 foreach (Player item in players)

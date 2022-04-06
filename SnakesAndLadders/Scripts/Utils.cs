@@ -44,7 +44,7 @@ namespace SnakesAndLadders
             List<Player> players = new List<Player>();
             foreach (Player item in _players)
             {
-                if (item._Position_Cage == number)
+                if (item._PositionCage == number)
                 {
                     players.Add(item);
                 }
@@ -74,7 +74,7 @@ namespace SnakesAndLadders
             {
                 foreach(JToken item in MapSettings._ladders)
                 {
-                    if(Convert.ToInt32(item[0]) == player._Position_Cage)
+                    if(Convert.ToInt32(item[0]) == player._PositionCage)
                     {
                         return Convert.ToInt32(item[1]);
                     }
@@ -102,7 +102,7 @@ namespace SnakesAndLadders
             {
                 foreach (JToken item in MapSettings._snakes)
                 {
-                    if (Convert.ToInt32(item[0]) == player._Position_Cage)
+                    if (Convert.ToInt32(item[0]) == player._PositionCage)
                     {
                         return Convert.ToInt32(item[1]);
                     }

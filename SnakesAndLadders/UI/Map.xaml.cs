@@ -105,7 +105,6 @@ namespace SnakesAndLadders
                 await Task.Delay(600);
             }
             ImageCubeIcon.Source = new BitmapImage(new Uri($@"pack://application:,,,/SnakesAndLadders;component/Resources/CubesIcon/Cube_{dice}.png"));
-            ButtonDiceNext.IsEnabled = true;
 
             Utils._currentPlayer += 1;
             if (Utils._currentPlayer != 0)

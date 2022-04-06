@@ -30,9 +30,9 @@
                 BorderThickness="5,0,0,0">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="330"/>
+                    <RowDefinition Height="290"/>
                     <RowDefinition/>
-                    <RowDefinition Height="16.001"/>
+                    <RowDefinition Height="40"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
@@ -58,7 +58,15 @@
                            Text="Ходит игрок WinsomeQuill!"
                            HorizontalAlignment="Center"
                            FontFamily="Arial"
-                           FontWeight="Bold"/>
+                           FontWeight="Bold">
+                    <TextBlock.Effect>
+                        <DropShadowEffect ShadowDepth="4"
+                                          Direction="330"
+                                          Color="Black"
+                                          Opacity="0.5"
+                                          BlurRadius="4"/>
+                    </TextBlock.Effect>
+                </TextBlock>
 
                 <ScrollViewer Grid.Column="0"
                               Grid.Row="3"

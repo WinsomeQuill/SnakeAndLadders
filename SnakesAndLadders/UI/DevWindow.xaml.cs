@@ -60,7 +60,7 @@ namespace SnakesAndLadders
             StackPanelDev2.Children.Clear();
             foreach (Player item in Utils._players)
             {
-                StackPanelDev2.Children.Add(new TextBlock { Text = $"{item._Name} - Pos: {item._Position_Cage} R: {item._Position[0]} C: {item._Position[1]}" });
+                StackPanelDev2.Children.Add(new TextBlock { Text = $"{item._Name} - Pos: {item._PositionCage} R: {item._Position[0]} C: {item._Position[1]}" });
             }
         }
     }
