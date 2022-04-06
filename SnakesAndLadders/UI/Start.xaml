@@ -24,7 +24,6 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
         <Image Name="Cloud"
@@ -52,15 +51,9 @@
                 Style="{StaticResource ButtonLauncher}"
                 Click="HowToPlay_Click"/>
 
-        <Button Name="Settings"
-                Content="Настройки"
-                Grid.Row="3"
-                Style="{StaticResource ButtonLauncher}"
-                Click="Settings_Click"/>
-
         <Button Name="Exit"
                 Content="Выйти"
-                Grid.Row="4"
+                Grid.Row="3"
                 Style="{StaticResource ButtonLauncher}"
                 Click="Exit_Click"/>
 

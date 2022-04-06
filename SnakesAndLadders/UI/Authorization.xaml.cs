@@ -125,7 +125,7 @@ namespace SnakesAndLadders.UI
 
             foreach (Player item in Utils._players)
             {
-                item.SetPosition(1, true);
+                item.SetPosition(0, true);
             }
             Utils._map.TextBlockInformer.Text = $"Сейчас ходит игрок \"{Utils._players[0]._Name}\"";
             map.Show();

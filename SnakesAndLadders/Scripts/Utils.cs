@@ -17,6 +17,7 @@ namespace SnakesAndLadders
         public static bool _debug = false;
         public static List<Player> _players = new List<Player>();
         public static int _currentPlayer = 0;
+
         public static int GetCageNumberByGrid(int row, int column)
         {
             return MapSettings._cachemap[row, column];
@@ -81,12 +82,14 @@ namespace SnakesAndLadders
             }
             catch (ArgumentOutOfRangeException)
             {
-                MessageBox.Show($"Произошла ошибка! Проверьте Maps.json, а именно параметр \"Ladders\" карты - \"{MapSettings._name}\"!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Произошла ошибка! Проверьте Maps.json, а именно параметр \"Ladders\" карты - \"{MapSettings._name}\"!", 
+                    "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 Environment.Exit(1);
             }
             catch(Exception)
             {
-                MessageBox.Show($"Произошла неизвестная ошибка! Проверьте Maps.json, карты - \"{MapSettings._name}\"!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Произошла неизвестная ошибка! Проверьте Maps.json, карты - \"{MapSettings._name}\"!", 
+                    "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 Environment.Exit(1);
             }
 
@@ -107,12 +110,14 @@ namespace SnakesAndLadders
             }
             catch (ArgumentOutOfRangeException)
             {
-                MessageBox.Show($"Произошла ошибка! Проверьте Maps.json, а именно параметр \"Snakes\" карты - \"{MapSettings._name}\"!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Произошла ошибка! Проверьте Maps.json, а именно параметр \"Snakes\" карты - \"{MapSettings._name}\"!", 
+                    "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 Environment.Exit(1);
             }
             catch (Exception)
             {
-                MessageBox.Show($"Произошла неизвестная ошибка! Проверьте Maps.json, карты - \"{MapSettings._name}\"!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Произошла неизвестная ошибка! Проверьте Maps.json, карты - \"{MapSettings._name}\"!", 
+                    "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 Environment.Exit(1);
             }
 

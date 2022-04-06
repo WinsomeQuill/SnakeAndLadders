@@ -19,7 +19,6 @@ namespace SnakesAndLadders
 
         public static int[,] _cachemap { get; set; } // хэширование клеток поля, имеет след. представление [index, [column, row]]
                                                                                         // где index - номер клетки, column - номер колонки, row - номер столбца
-
         public static void cachedmap()
         {
             _cachemap = new int[_size, _size];
